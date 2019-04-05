@@ -1,0 +1,97 @@
+<!-- <app-header></app-header>
+
+<br><br>
+<div class="row">
+	
+<div class="col-md-4">
+	<div class="panel panel-default"  *ngFor="let u of friends,let i=index" data-target="#myModal" (click)="openModel(u)" style="cursor: pointer;">
+		<div class="panel-body" style="background-color: #6698bf;">
+			<div *ngIf="u.fileName">
+			<img height="150" width="200" src="http://localhost/project/server{{u.fileName}}">
+		</div><h1 >{{u.first_name}} {{u.last_name}}</h1>
+			
+		</div>
+	</div>
+</div>
+
+<div class="col-md-8">
+	<div class="chat" id="myModal"  [hidden]="!user">
+		<div class="row " style="text-align: left;padding-top:5px;font-size: 20px;color: black;background-color: #009688;">
+			<h4  class="text-left" *ngIf="user" >{{user.first_name}} {{user.last_name}}</h4>
+		</div>
+		<ul class="list-group" id="chat" *ngIf="messages.length">
+			<div class="chat_inner">
+			<li class="list-group-item" *ngFor="let msg of messages" [ngStyle]="{'text-align':msg.srcId==currentUser._id?'right':'left','float':msg.srcId==currentUser._id?'right':'left','background-color':msg.srcId==currentUser._id?'#795548':'#9faeb3'}" style="width: 65%; margin:7px;  text-align: center;padding-top: 20px;color: black;" >
+				<div >
+					<p>{{msg.msg}}</p>
+				</div>
+			</li>
+		</div>
+		</ul>
+		<div class="input-group-append" style="display: inline-block; float: right; width: 100%">
+			<div style="width: calc(100% - 50px);float: left;position: relative;" >
+			<i class="far fa-smile" style="position: absolute;right: 0;top: 0;bottom: 0;margin: auto;display: table;"></i>
+
+			<input type="text" name="message" [(ngModel)]="message" placeholder="Type a message..." autofocus="autofocus" style="padding-right: 30px;width: 100%;">
+		</div>
+
+			&nbsp;<button type="button" class="btn btn-success" data-dismiss="modal" (click)="sendMessage(user._id)" style="padding: 5px;margin-bottom: 15px;">Send</button>
+		</div>
+
+
+	</div>
+</div>
+</div>
+ -->
+
+ <app-header></app-header>
+<div class="col-sm-10">
+	<div class="row">
+		<div class="col-sm-4 col-sm-offset-1 main">
+			<ul class="list-group">
+				<div *ngFor="let user of friends, let i=index">
+					<li class="list-group-item" (click)="openModel(user)" style="background-color: #6698bf;">	<img src="http://localhost/project/server{{user.fileName}}" class="img-rounded">
+						<h4 class="text_left">{{user.first_name}} {{user.last_name}}</h4>
+					</li>
+				</div>
+			</ul>
+		</div>
+
+		<div class="col-sm-6 col-sm-offset-1">
+			<div class="panel-group">
+				<div class="chat_content" [hidden]="!user">
+					<div class="panel panel-default">
+						<div class="panel-heading" >
+							<div class="text-left" *ngIf="user"><img src="http://localhost/project/server{{user.fileName}}" class="img-rounded">
+								<div class="text-left" *ngIf="user">
+								<h4 class="text_left">{{user.first_name}} {{user.last_name}}</h4>
+							</div>
+						</div>
+
+						<div class="panel-body">
+							<ul id="chat" class="list-group" *ngIf="messages.length">
+								<div class="chat_inner">
+									<li class="list-group-item" *ngFor="let msg of messages;" [ngStyle]="{'text-align': msg.srcId==currentUser._id?'right':'left', 'float': msg.srcId==currentUser._id?'right':'left','background-color':msg.srcId==currentUser._id?'#795548':'#9faeb3','color':msg.srcId==currentUser._id?'white':'black'}">
+										<div>{{msg.msg}}</div>
+									</li>
+								</div>
+							</ul>
+						</div>
+
+						<div class="panel-footer">
+							<div class="input-group">
+								<form #f="ngForm">
+									<input type="text" class="form-control" placeholder="Type a message..." name="message" [(ngModel)]="message" required="required" autofocus="autofocus" (keyup.enter)="sendMessage(user._id); f.resetForm()">
+								<!-- <div class="input-group-append">
+									<button type="submit" class="btn btn-sm btn-success" type="button" (click)="sendMessage(user._id); f.resetForm()">send</button>
+								</div> -->
+							</form>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</div>

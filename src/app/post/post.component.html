@@ -1,0 +1,68 @@
+<app-header></app-header>
+<div class="col-sm-10">
+	<div class="col-sm-6 col-sm-offset-3 main">
+		<div class="panel-group">
+			<form #myForm="ngForm" (submit)="addPost(detail); myForm.reset()">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<div class="col-sm-10">
+							<div class="profile_section">
+								<div class="profile_image">
+									<img src="http://localhost/project/server{{currentUser.fileName}}" class="img-rounded" onerror="this.src='assets/d2.jpeg'">
+								</div>
+								<div class="profile_name_and_time">
+									<h4 class="name">{{currentUser.first_name}} {{currentUser.last_name}}
+									</h4>
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-2">
+							<div class="dropdown">
+								<span class="glyphicon glyphicon-option-vertical dropdown-toggle" data-toggle="dropdown"></span>
+								<ul class="dropdown-menu list-group">
+									<li class="list-group-item">Disable Comment</li>
+									<li class="list-group-item">disable reshare</li>
+									<li class="list-group-item">Turn on notification for this post</li>	
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-12">
+						<div class="panel-body">
+							<div class="col-sm-11">
+								<div class="form-group">
+									<textarea [(ngModel)]="detail.content" name="content" placeholder="Write Something Here..."class="form-control" rows="5" width="100%"></textarea>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="panel-footer">
+						<div class="icon">
+							<div class="update_pic col-sm-2">
+								<div class="form-group">
+									<label for="profile"><i class="fa fa-camera" aria-hidden="true"></i></label>
+									<input type="file" id="profile" (change)="changeFile($event)"  hidden="true" style="display:none;" name="fileUpload" [(ngModel)]="detail.fileName" multiple>
+								</div>
+							</div>
+							<div class="Video col-sm-2">
+								<span class="glyphicon glyphicon-facetime-video"></span>
+							</div>
+							<div class="col-sm-2">
+								<i class="fa fa-tag" aria-hidden="true"></i>
+							</div>
+						</div>
+						<div class="Post_btn col-sm-12">
+							<div class="col-sm-2 text-right">
+								<input type="submit" (click)="myForm.reset()" value="Cancel">
+							</div>
+							<div class="col-sm-2 text-right">
+								<!-- <input type="submit"  value="Post"> -->
+								<button class="button">post</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>

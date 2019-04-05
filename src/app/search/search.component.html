@@ -1,0 +1,35 @@
+<app-header></app-header>
+<div class="row" style="margin-top: 180px;margin-left: 200px;">
+	<div class="col-md-6 offset-3 form-group">
+		<input type=" text" name="key" class="form-control" id="key" placeholder="search friend" [(ngModel)]="key" style="border-radius: 10px;">
+</div> 
+<div class="col-md-3">
+	<button type="submit" class="btn btn-success col-md-3" (click)="searchUser()" style="border-radius: 10px;">search</button>
+</div>
+</div>
+
+
+<div class="container col-md-6" style="margin-left: 200px;">
+	<table class="table table-striped" *ngIf="users">
+		<thead>
+			<tr>
+				<th></th>
+				<th>First Name</th>
+				<th>Last Name</th>
+				<th>Action</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr *ngFor="let user of users; let i=index">
+				<div class="profile_section">
+						<div class="profile_image" *ngIf="user.fileName">
+							<img src="http://localhost/project/server{{user.fileName}}" onerror="this.src='assets/d3.jpeg'" class="img-rounded">
+						</div>
+					</div>
+				<td>{{user.first_name}}</td>
+				<td>{{user.last_name}}</td>
+				<td *ngIf="!user.isFriend"><button type="submit" class="btn btn-info" (click)="addFriends(user._id)">Follow</button></td>
+				<td *ngIf="user.isFriend"><button type="submit" class="btn btn-info" (click)="removeFriends(user._id)">Unfollow</button>
+		</tbody>
+	</table>
+</div>

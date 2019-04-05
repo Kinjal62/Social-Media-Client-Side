@@ -1,0 +1,33 @@
+<app-header></app-header>
+
+<br><br>
+<!-- <div class="col-sm-10">
+	<div class="row">
+		<div class="col-sm-6 col-sm-offset-3 main">
+			<div class="panel panel-default" style="padding: 0;" *ngFor="let u of friends,let i=index">
+				<div class="panel-body" style="background-color:#6698bf;" draggable="true">
+		<div *ngIf="u.fileName" >
+			<img height="150" width="200" src="http://localhost/project/server{{u.fileName}}" class="img-rounded">
+		</div>
+		<span><h1 class="text_left">{{u.first_name}} {{u.last_name}}</h1></span>
+		<button type="submit" class="btn btn-info" (click)="removeFriend(u._id)">Unfollow</button>
+	</div>
+</div>
+</div>
+</div>
+</div> -->
+<div class="col-sm-10">
+	<div class="row">
+		<div class="col-sm-4 col-sm-offset-2 main">
+			<div class="panel-group" *ngFor="let u of friends,let i=index">
+				<div class="panel panel-default" style="padding: 0;">
+					<div class="panel-body" style="background-color:#6698bf; padding: 15px;" draggable="true">
+						<img class="img-rounded" src="http://localhost/project/server{{u.fileName}}">
+						<h4 class="text_left">{{u.first_name}} {{u.last_name}}</h4>
+						<button class="btn btn-primary" type="submit" (click)="removeFriend(u._id)">UnFollow</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

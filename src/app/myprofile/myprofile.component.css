@@ -1,0 +1,107 @@
+.cardhovercard {
+    position: relative;
+    padding-top: 0;
+    overflow: hidden;
+    
+}
+label{
+    width: 100%;
+}
+label i{
+    font-size: 30px;
+}
+#cover{
+    position: absolute;
+    top: 5%;
+    left: 28%;  
+}
+
+.cover_image{
+    width: 100%;
+    height: 400px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px 10px 10px 10px;
+    border:1px solid #000;
+    margin-top: 30px;
+
+}
+.cover_image img{
+    min-height: 100%;
+    max-width: 100%;
+    min-width: 100%;
+    object-fit: cover;
+}
+.profile_picture{
+    height: 160px;
+    width: 160px;
+    border-radius: 255%;
+    display: block;
+    /*margin: 0px auto;*/
+    margin-top: -117px;
+    margin-bottom: 27px;
+    margin-left: 21px;
+    position: relative;
+    z-index: 11;
+    overflow: hidden;
+    padding: 4px;
+    /*  background-color: rgba(255,255,255,0.75);*/
+    background-color: #fff;
+}
+.profile_picture img{
+    min-height: 100%;
+    max-width: 100%;
+    min-width: 100%;
+    object-fit: cover;
+    border-radius: 86px;
+}
+.user_name{
+    position: absolute;
+    bottom: 37%;
+    left: 32%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    color: white;
+}
+.update_cover{
+    position: absolute;
+    top: 10%;
+    padding: 20px;
+    left: 2%;
+    color: #fff;
+}
+.update_profile{
+    position: absolute;
+    bottom: 1%;
+    right: 20%;
+    padding: 20px;
+}
+.update_pic{
+    position: absolute;
+    bottom:-15%;
+    padding: 20px;
+    left: 25%;
+    color: #fff;
+}
+.form-group label {
+    margin-top: 20px;
+}
+input[type=file] + label{
+    width: 100%;
+    margin-top: 0px;
+}
+input[type=file] + label i{
+    font-size: 40px;
+    color: #fff;
+    text-shadow: -2px 4px 30px #9E9E9E;
+}
+@-webkit-keyframes zoom {
+  from {-webkit-transform:scale(0)} 
+  to {-webkit-transform:scale(1)}
+}
+
+@keyframes zoom {
+  from {transform:scale(0)} 
+  to {transform:scale(1)}
+}
+

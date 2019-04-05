@@ -1,0 +1,100 @@
+<app-header></app-header>
+<!-- <div  style="margin-top: 25px;">
+	<div class="panel panel-default col-md-offset-3 col-md-6" *ngFor="let post of posts,let i=index" style="background-color: #6698bf;color: black;">
+		<div class="panel-body">
+			<h4>Author</h4>
+			<p style="word-break: break-all;">{{post.content}}</p>
+			<div *ngIf="post.fileName">
+				<img height="300" width="300" src="http://localhost/project/server{{post.fileName}}">
+			</div>
+		</div>
+	</div>
+</div> -->
+
+<div class="col-sm-10 col-sm-offset-1">
+	<div class="row grid">
+		<div class="col-sm-6 main grid-item" *ngFor="let post of posts; let i=index" style="background-color: #6698bf;color: black;">
+			<div class="panel-group">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<div class="col-sm-10">
+							<div class="profile_section">
+								<div class="profile_image">
+									<img src="http://localhost/project/server{{post.userId[0].fileName}}" height="40" width="50" onerror="this.src='assets/d2.jpeg'" class="img-circle pull-left" style="margin-top: -3px;vertical-align: middle;">
+								</div>
+							</div>
+							<div class="profile_name_and_time">
+								<h4 class="name">{{currentUser.first_name}} {{currentUser.last_name}}</h4>
+								<div class="date_time">
+									<h5>{{post.datetime | date }}</h5>
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-2">
+							<div class="dropdown">
+								<span class="glyphicon glyphicon-option-horizontal dropdown-toggle" data-toggle="dropdown"></span>
+								<ul class="dropdown-menu list-group">
+									<li class="list-group-item">Save Post</li>
+									<li class="list-group-item">Hide Post</li>
+									<!-- <li class="list-group-item" (click)="updatePosts(post,i)">Edit Post</li> -->
+									<li class="list-group-item" (click)="deletePosts(post,i)">Delete Post</li>
+									<li class="list-group-item">Turn on notification for this post</li>	
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-12">
+						<div class="panel-body">
+							<h3>{{post.content}}</h3>
+							<div class="row">
+								<!-- <div *ngIf="post.fileName" [ngClass]=" 'post_frame'+' '+getImageLayoutClass(post.fileName.length)"> -->
+								<!-- 	<div *ngFor="let image of post.fileName" class="image_box">
+											<img src="http://localhost/project/server{{image}}">
+									</div> -->
+							
+								<div *ngIf="post.fileName" class="image_box">
+									<img src="http://localhost/project/server{{post.fileName}}" class="img-responsive">
+								</div>
+							<!-- </div> -->
+						</div>
+					</div>
+				</div>
+					<div class="col-sm-12">
+						<div class="panel-footer">
+							<div class="col-sm-4">
+								<i class="far fa-thumbs-up" (click)="postLike(post._id)"></i>
+								<span>Like {{post.like.length}}</span>
+							</div>
+							<div class="col-sm-4">
+								<i class="far fa-comment-alt"></i>
+								<span>Comment</span>
+							</div>
+							<div class="col-sm-4">
+								<i class="fas fa-share"></i>
+								<span>Share</span>
+							</div>
+						</div>
+					</div>
+					<div *ngFor="let i of post.comment" class="comment_section">
+						<div class="comment_profile">
+							<img class="img-responsive" src="http://localhost/project/server{{currentUser.fileName}}" onerror="this.src='assets/d3.jpeg'">
+						</div>
+						
+						<p class="usercomment"></p>
+						<p>{{i.comment}}</p>
+					</div>
+					<div class="comment_section">
+						<div *ngIf="post.fileName" class="comment_profile">
+							<img class="img-responsive" src="http://localhost/project/server{{currentUser.fileName}}" onerror="this.src='assets/d3.jpeg'">
+						</div>
+						<form #f="ngForm" class="comment_textbox">
+							<div class="form-group">
+								<input type="text" name="comment" class="form-control" [(ngModel)]="comment" required="required" placeholder="Write a Comment..." autofocus="autofocus" (keyup.enter)="commentUser(i,postid,comment); f.resetForm()">
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

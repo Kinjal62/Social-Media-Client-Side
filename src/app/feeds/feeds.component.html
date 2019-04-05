@@ -1,0 +1,70 @@
+<app-header></app-header>
+<div class="col-md-5 col-md-offset-3" style="margin-top: 25px;padding: 0px;">
+	<div class="panel-group">
+		<div class="panel panel-default" *ngFor="let friend of friends,let i=index" style="background-color: white;color: black;" >
+			<div class="panel-heading">
+				<div class="col-sm-10">
+					<div class="profile_section">
+						<div class="profile_image">
+							<img src="http://localhost/project/server{{friend.userId[0].fileName}}" onerror="this.src='assets/d3.jpeg'" class="img-rounded">
+						</div>
+					</div>
+					<div class="profile_name_and_time">
+						<h3 class="name">{{friend.userId[0].first_name}}
+						{{friend.userId[0].last_name}}</h3>
+						<div class="date_time">
+							<h5>{{friend.datetime | date }}</h5>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-12">
+					<div class="panel-body">
+						<h4>{{friend.content}}</h4>
+						<div class="row">
+							<div *ngIf="friend.fileName">
+								<img  src="http://localhost/project/server{{friend.fileName}}" onerror="this.src='assets/d3.jpeg'" class="img-responsive">
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-12">
+					<div class="panel-footer">
+						<div class="col-sm-4">
+							<i class="far fa-thumbs-up" *ngIf="!friend.isLike" (click)="postLike(friend._id)"></i>
+							<span>Like {{friend.like.length}}</span>
+						</div>
+						<div class="col-sm-4" for="cmt" data-target="#myModal">
+							<i class="far fa-comment-alt"></i>
+							<span>Comment</span>
+						</div>
+						<div class="col-sm-4">
+							<i class="fas fa-share"></i>
+							<span>Share</span>
+						</div>
+					</div>
+				</div>
+				<!-- <hr style="margin-top: 15px; margin-bottom: 0px;" />
+				 -->
+				<div *ngFor="let i of friend.comment" class="comment_section"  id="myModal">
+					<div class="comment_profile">
+						<img class="img-rounded" src="http://localhost/project/server{{i.userId.fileName}}" onerror="this.src='assets/d3.jpeg'">
+					</div>
+					<h4 class="usercomment"><b>{{i.userId.first_name}} {{i.userId.last_name}}</b></h4>
+					<h4 class="cmt" style="text-transform: capitalize;">{{i.comment}}</h4>
+				</div>
+
+				<div class="comment_section">
+					<div *ngIf="friend.fileName" class="comment_profile">
+						<img class="img-rounded" src="http://localhost/project/server{{friend.userId[0].fileName}}" onerror="this.src='assets/d3.jpeg'">
+					</div>
+					<form #f="ngForm" class="comment_textbox">
+						<div class="form-group">
+							<input type="text" name="comment" class="form-control" [(ngModel)]="comment" required="required" placeholder="Write a Comment..." autofocus="autofocus" (keyup.enter)="commentUser(friend._id,comment); f.resetForm()">
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
